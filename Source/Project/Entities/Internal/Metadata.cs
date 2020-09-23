@@ -4,7 +4,7 @@ namespace RegionOrebroLan.OrganizationServices.Data.Entities.Internal
 	{
 		#region Fields
 
-		public const int BusinessHoursLength = 200;
+		public const int BusinessHoursLength = 500;
 		public const int TelephoneNumberLength = 50;
 
 		#endregion

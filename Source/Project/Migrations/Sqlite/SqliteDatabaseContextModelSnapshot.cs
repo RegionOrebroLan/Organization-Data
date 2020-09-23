@@ -63,7 +63,7 @@ namespace RegionOrebroLan.OrganizationServices.Data.Migrations.Sqlite
 
 				b.Property<string>("DropInHours")
 					.HasColumnType("TEXT")
-					.HasMaxLength(200);
+					.HasMaxLength(500);
 
 				b.Property<string>("EndDate")
 					.HasColumnType("TEXT")
@@ -336,11 +336,11 @@ namespace RegionOrebroLan.OrganizationServices.Data.Migrations.Sqlite
 
 				b.Property<string>("SurgeryHours")
 					.HasColumnType("TEXT")
-					.HasMaxLength(200);
+					.HasMaxLength(500);
 
 				b.Property<string>("TelephoneHours")
 					.HasColumnType("TEXT")
-					.HasMaxLength(200);
+					.HasMaxLength(500);
 
 				b.Property<string>("TelephoneNumber")
 					.HasColumnType("TEXT")
@@ -376,7 +376,7 @@ namespace RegionOrebroLan.OrganizationServices.Data.Migrations.Sqlite
 
 				b.Property<string>("VisitingHours")
 					.HasColumnType("TEXT")
-					.HasMaxLength(200);
+					.HasMaxLength(500);
 
 				b.HasKey("Id");
 

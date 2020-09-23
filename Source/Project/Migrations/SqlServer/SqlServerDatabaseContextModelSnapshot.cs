@@ -66,8 +66,8 @@ namespace RegionOrebroLan.OrganizationServices.Data.Migrations.SqlServer
 					.HasMaxLength(500);
 
 				b.Property<string>("DropInHours")
-					.HasColumnType("nvarchar(200)")
-					.HasMaxLength(200);
+					.HasColumnType("nvarchar(500)")
+					.HasMaxLength(500);
 
 				b.Property<string>("EndDate")
 					.HasColumnType("nvarchar(20)")
@@ -339,12 +339,12 @@ namespace RegionOrebroLan.OrganizationServices.Data.Migrations.SqlServer
 					.HasMaxLength(200);
 
 				b.Property<string>("SurgeryHours")
-					.HasColumnType("nvarchar(200)")
-					.HasMaxLength(200);
+					.HasColumnType("nvarchar(500)")
+					.HasMaxLength(500);
 
 				b.Property<string>("TelephoneHours")
-					.HasColumnType("nvarchar(200)")
-					.HasMaxLength(200);
+					.HasColumnType("nvarchar(500)")
+					.HasMaxLength(500);
 
 				b.Property<string>("TelephoneNumber")
 					.HasColumnType("nvarchar(50)")
@@ -379,8 +379,8 @@ namespace RegionOrebroLan.OrganizationServices.Data.Migrations.SqlServer
 					.HasMaxLength(500);
 
 				b.Property<string>("VisitingHours")
-					.HasColumnType("nvarchar(200)")
-					.HasMaxLength(200);
+					.HasColumnType("nvarchar(500)")
+					.HasMaxLength(500);
 
 				b.HasKey("Id");
 
