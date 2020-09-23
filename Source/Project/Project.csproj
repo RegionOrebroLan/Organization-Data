@@ -6,7 +6,7 @@
 		<Description>Database for organizational directory-services, Region Örebro län.</Description>
 		<LangVersion>Latest</LangVersion>
 		<TargetFramework>netstandard2.0</TargetFramework>
-		<VersionPrefix>0.0.0</VersionPrefix>
+		<VersionPrefix>0.0.1</VersionPrefix>
 		<VersionPrereleaseName>alpha</VersionPrereleaseName>
 	</PropertyGroup>
 	<PropertyGroup Label="Dependant values">
