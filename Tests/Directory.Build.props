@@ -1,0 +1,7 @@
+<Project>
+	<Import Project="../Directory.Build.props" />
+	<PropertyGroup>
+		<IsPackable>false</IsPackable>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+	</PropertyGroup>
+</Project>

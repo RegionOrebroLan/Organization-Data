@@ -1,6 +1,7 @@
 using System;
+using RegionOrebroLan.OrganizationServices.Data;
 
-namespace RegionOrebroLan.OrganizationServices.Data.IntegrationTests.Fakes
+namespace IntegrationTests.Fakes
 {
 	public class FakedSystemClock : ISystemClock
 	{

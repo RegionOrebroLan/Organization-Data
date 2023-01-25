@@ -1,7 +1,8 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using RegionOrebroLan.OrganizationServices.Data;
 
-namespace RegionOrebroLan.OrganizationServices.Data.IntegrationTests
+namespace IntegrationTests
 {
 	[TestClass]
 	public class SystemClockTest

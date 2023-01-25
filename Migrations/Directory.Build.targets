@@ -1,0 +1,5 @@
+<Project>
+	<ItemGroup>
+		<ProjectReference Include="../../Source/Project/Project.csproj" />
+	</ItemGroup>
+</Project>

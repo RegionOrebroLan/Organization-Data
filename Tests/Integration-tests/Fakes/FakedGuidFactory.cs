@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using RegionOrebroLan.OrganizationServices.Data;
 
-namespace RegionOrebroLan.OrganizationServices.Data.IntegrationTests.Fakes
+namespace IntegrationTests.Fakes
 {
 	public class FakedGuidFactory : IGuidFactory
 	{

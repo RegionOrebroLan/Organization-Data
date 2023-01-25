@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using Microsoft.Data.SqlClient;
 
-namespace RegionOrebroLan.OrganizationServices.Data.IntegrationTests.Helpers
+namespace IntegrationTests.Helpers
 {
 	public static class SqlServerHelper
 	{

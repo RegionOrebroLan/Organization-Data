@@ -1,16 +1,17 @@
 using System;
 using System.IO;
 using System.Linq;
+using IntegrationTests.Helpers;
 using Microsoft.AspNetCore.Builder.Internal;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using RegionOrebroLan.OrganizationServices.Data;
 using RegionOrebroLan.OrganizationServices.Data.Builder;
 using RegionOrebroLan.OrganizationServices.Data.DependencyInjection.Extensions;
-using RegionOrebroLan.OrganizationServices.Data.IntegrationTests.Helpers;
 
-namespace RegionOrebroLan.OrganizationServices.Data.IntegrationTests.Builder
+namespace IntegrationTests.Builder
 {
 	[TestClass]
 	public class ApplicationBuilderExtensionTest

@@ -1,16 +1,17 @@
 using System;
 using System.IO;
 using System.Linq;
+using IntegrationTests.Fakes;
+using IntegrationTests.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using RegionOrebroLan.OrganizationServices.Data;
 using RegionOrebroLan.OrganizationServices.Data.DependencyInjection.Extensions;
 using RegionOrebroLan.OrganizationServices.Data.Entities;
-using RegionOrebroLan.OrganizationServices.Data.IntegrationTests.Fakes;
-using RegionOrebroLan.OrganizationServices.Data.IntegrationTests.Helpers;
 
-namespace RegionOrebroLan.OrganizationServices.Data.IntegrationTests
+namespace IntegrationTests
 {
 	[TestClass]
 	public class DatabaseContextTest
@@ -68,7 +69,7 @@ namespace RegionOrebroLan.OrganizationServices.Data.IntegrationTests
 					var created = DateTime.UtcNow;
 					systemClock.UtcNow = created;
 
-					databaseContext.Add(new Entry {DistinguishedName = "Organization-A", HsaIdentity = "Organization-A"});
+					databaseContext.Add(new Entry { DistinguishedName = "Organization-A", HsaIdentity = "Organization-A" });
 					Assert.AreEqual(1, databaseContext.SaveChanges());
 					var entry = databaseContext.Entries.First();
 					Assert.AreEqual(created, entry.Created);
