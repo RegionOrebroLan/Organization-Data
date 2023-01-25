@@ -1,5 +1,7 @@
 using System;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Internal;
 using RegionOrebroLan.OrganizationServices.Data.Entities;
@@ -56,7 +58,7 @@ namespace RegionOrebroLan.OrganizationServices.Data
 			this.CreateEntryModel(modelBuilder);
 		}
 
-		public override int SaveChanges()
+		protected internal virtual void PrepareSaveChanges()
 		{
 			var entityEntries = this.ChangeTracker.Entries().Where(entityEntry => entityEntry.State is EntityState.Added or EntityState.Modified).ToArray();
 			var entries = entityEntries.Select(entityEntry => entityEntry.Entity).OfType<Entry>().ToArray();
@@ -76,8 +78,20 @@ namespace RegionOrebroLan.OrganizationServices.Data
 
 				entry.Saved = now;
 			}
+		}
 
-			return base.SaveChanges();
+		public override int SaveChanges(bool acceptAllChangesOnSuccess)
+		{
+			this.PrepareSaveChanges();
+
+			return base.SaveChanges(acceptAllChangesOnSuccess);
+		}
+
+		public override async Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = new())
+		{
+			this.PrepareSaveChanges();
+
+			return await base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
 		}
 
 		#endregion
