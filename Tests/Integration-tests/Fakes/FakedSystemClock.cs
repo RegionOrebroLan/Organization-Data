@@ -1,5 +1,5 @@
 using System;
-using RegionOrebroLan.OrganizationServices.Data;
+using Microsoft.Extensions.Internal;
 
 namespace IntegrationTests.Fakes
 {
@@ -7,8 +7,7 @@ namespace IntegrationTests.Fakes
 	{
 		#region Properties
 
-		public virtual DateTime Now { get; set; }
-		public virtual DateTime UtcNow { get; set; }
+		public virtual DateTimeOffset UtcNow { get; set; }
 
 		#endregion
 	}

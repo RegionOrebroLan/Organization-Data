@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Internal;
 using RegionOrebroLan.OrganizationServices.Data.Entities;
 
 namespace RegionOrebroLan.OrganizationServices.Data
@@ -60,7 +61,7 @@ namespace RegionOrebroLan.OrganizationServices.Data
 			var entityEntries = this.ChangeTracker.Entries().Where(entityEntry => entityEntry.State == EntityState.Added || entityEntry.State == EntityState.Modified).ToArray();
 			var entries = entityEntries.Select(entityEntry => entityEntry.Entity).OfType<Entry>().ToArray();
 
-			var now = this.SystemClock.UtcNow;
+			var now = this.SystemClock.UtcNow.UtcDateTime;
 
 			foreach(var entityEntry in entityEntries)
 			{

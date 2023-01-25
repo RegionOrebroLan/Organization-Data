@@ -6,6 +6,7 @@ using IntegrationTests.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Internal;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RegionOrebroLan.OrganizationServices.Data;
 using RegionOrebroLan.OrganizationServices.Data.DependencyInjection.Extensions;
@@ -66,8 +67,8 @@ namespace IntegrationTests
 				{
 					databaseContext.Database.Migrate();
 
-					var created = DateTime.UtcNow;
-					systemClock.UtcNow = created;
+					systemClock.UtcNow = DateTimeOffset.UtcNow;
+					var created = systemClock.UtcNow.UtcDateTime;
 
 					databaseContext.Add(new Entry { DistinguishedName = "Organization-A", HsaIdentity = "Organization-A" });
 					Assert.AreEqual(1, databaseContext.SaveChanges());
