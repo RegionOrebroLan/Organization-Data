@@ -1,6 +1,7 @@
 <Project>
 	<PropertyGroup>
 		<AssemblyOriginatorKeyFile>$(SolutionDir)StrongName.Development.snk</AssemblyOriginatorKeyFile>
+		<CheckEolTargetFramework>false</CheckEolTargetFramework>
 		<DelaySign>false</DelaySign>
 		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
 		<LangVersion>Latest</LangVersion>
