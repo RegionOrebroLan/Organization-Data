@@ -58,14 +58,14 @@ namespace RegionOrebroLan.OrganizationServices.Data
 
 		public override int SaveChanges()
 		{
-			var entityEntries = this.ChangeTracker.Entries().Where(entityEntry => entityEntry.State == EntityState.Added || entityEntry.State == EntityState.Modified).ToArray();
+			var entityEntries = this.ChangeTracker.Entries().Where(entityEntry => entityEntry.State is EntityState.Added or EntityState.Modified).ToArray();
 			var entries = entityEntries.Select(entityEntry => entityEntry.Entity).OfType<Entry>().ToArray();
 
 			var now = this.SystemClock.UtcNow.UtcDateTime;
 
 			foreach(var entityEntry in entityEntries)
 			{
-				if(!(entityEntry.Entity is Entry entry))
+				if(entityEntry.Entity is not Entry entry)
 					continue;
 
 				if(entityEntry.State == EntityState.Added)
