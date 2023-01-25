@@ -50,6 +50,61 @@ Copy all the commands below and run them in the Package Manager Console.
 	Add-Migration Update -Context SqlServerDatabaseContext -OutputDir Migrations/SqlServer -Project Project -StartupProject SqlServer;
 	Write-Host "Finnished";
 
+### 1.3 Scaffold-DbContext
+
+If we want to know how we should code our DbContexts / Entities we can use **Scaffold-DbContext**. Create a database first with eg. **Microsoft SQL Server Management Studio** through the designer or with scripts. Then scaffold a db-context from it. Then we can look at the generated classes and see how we should "code first".
+
+- Create a LocalDB-database named eg. "07390b07-29ed-4944-aced-df2ad5b4dbc2".
+- Create your database tables etc.
+- Run: Scaffold-DbContext "Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=07390b07-29ed-4944-aced-df2ad5b4dbc2" Microsoft.EntityFrameworkCore.SqlServer -ContextDir "" -OutputDir "Your-directory"
+- Delete the database
+
+#### 1.3.1 Script example
+
+	CREATE TABLE [Entries] (
+		[Id] INT IDENTITY (1, 1) NOT NULL,
+		[Created] DATETIME DEFAULT(GETDATE()) NOT NULL,
+		[Disabled] BIT DEFAULT(1) NOT NULL,
+		[DistinguishedName] NVARCHAR (400) NOT NULL,
+		[Guid] UNIQUEIDENTIFIER DEFAULT(NEWID()) NOT NULL,
+		[Identity] NVARCHAR (50) NOT NULL,
+		[Saved] DATETIME DEFAULT(GETDATE()) NOT NULL,
+		CONSTRAINT [PK_Entries] PRIMARY KEY CLUSTERED ([Id] ASC)
+	);
+	GO
+
+	CREATE UNIQUE NONCLUSTERED INDEX [IX_Entries_DistinguishedName]
+		ON [Entries]([DistinguishedName] ASC);
+	GO
+
+	CREATE UNIQUE NONCLUSTERED INDEX [IX_Entries_Guid]
+		ON [Entries]([Guid] ASC);
+	GO
+
+	CREATE UNIQUE NONCLUSTERED INDEX [IX_Entries_Identity]
+		ON [dbo].[Entries]([Identity] ASC);
+	GO
+
+	CREATE TABLE [Organizations]
+	(
+		[Id] INT NOT NULL,
+		[TelephoneNumber] NVARCHAR(20),
+		CONSTRAINT [PK_Organizations] PRIMARY KEY CLUSTERED ([Id] ASC),
+		CONSTRAINT [FK_Organizations_Entries] FOREIGN KEY ([Id]) REFERENCES [Entries] ([Id])
+		ON DELETE CASCADE
+		ON UPDATE NO ACTION
+	);
+	GO
+
+	CREATE TRIGGER [AfterOrganizationDelete] ON [Organizations]
+	AFTER DELETE
+	AS
+	BEGIN
+		DELETE
+		FROM [Entries]
+		WHERE [Id] IN (SELECT [Id] FROM DELETED);
+	END;
+
 ## 2 Links
 
 - [Migrations with Multiple Providers](https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/providers/)
