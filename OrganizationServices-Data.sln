@@ -23,6 +23,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Migrations", "Migrations", 
 		Migrations\Directory.Build.targets = Migrations\Directory.Build.targets
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{DF147BA2-7ADB-4D49-AF00-6C9AF06F5EC5}"
+	ProjectSection(SolutionItems) = preProject
+		Samples\.editorconfig = Samples\.editorconfig
+		Samples\Directory.Build.props = Samples\Directory.Build.props
+		Samples\Directory.Build.targets = Samples\Directory.Build.targets
+	EndProjectSection
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{97942DA1-C712-4388-8946-A55B6035FB3F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5C2651D0-70E5-43A0-AC7C-BF0D295A41D4}"
@@ -31,6 +38,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5C2651D0
 		Tests\Directory.Build.props = Tests\Directory.Build.props
 		Tests\Directory.Build.targets = Tests\Directory.Build.targets
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = ".NET 6.0", "Samples\.NET 6.0\.NET 6.0.csproj", "{CEAFC139-60FA-4810-ACC7-79FF3B280603}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = ".NET Core 3.1", "Samples\.NET Core 3.1\.NET Core 3.1.csproj", "{DF080289-C246-491D-A366-F5F64B4C056B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sqlite", "Migrations\Sqlite\Sqlite.csproj", "{777FE8DC-237B-4C48-BFE3-0144ADEB358D}"
 EndProject
@@ -68,6 +79,14 @@ Global
 		{00562949-2338-4662-AC16-231E1DC30510}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00562949-2338-4662-AC16-231E1DC30510}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00562949-2338-4662-AC16-231E1DC30510}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEAFC139-60FA-4810-ACC7-79FF3B280603}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEAFC139-60FA-4810-ACC7-79FF3B280603}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEAFC139-60FA-4810-ACC7-79FF3B280603}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEAFC139-60FA-4810-ACC7-79FF3B280603}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF080289-C246-491D-A366-F5F64B4C056B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF080289-C246-491D-A366-F5F64B4C056B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF080289-C246-491D-A366-F5F64B4C056B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF080289-C246-491D-A366-F5F64B4C056B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,6 +97,8 @@ Global
 		{041B94DE-A9BB-44F7-80F6-03411AA43735} = {97942DA1-C712-4388-8946-A55B6035FB3F}
 		{78E5CE86-A55A-4792-827F-2489473577A1} = {5C2651D0-70E5-43A0-AC7C-BF0D295A41D4}
 		{00562949-2338-4662-AC16-231E1DC30510} = {5C2651D0-70E5-43A0-AC7C-BF0D295A41D4}
+		{CEAFC139-60FA-4810-ACC7-79FF3B280603} = {DF147BA2-7ADB-4D49-AF00-6C9AF06F5EC5}
+		{DF080289-C246-491D-A366-F5F64B4C056B} = {DF147BA2-7ADB-4D49-AF00-6C9AF06F5EC5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F181FA82-6FD3-449C-A86A-5C3C8F47CB96}
