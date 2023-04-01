@@ -7,9 +7,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RegionOrebroLan.OrganizationServices.Data;
-using RegionOrebroLan.OrganizationServices.Data.Builder;
-using RegionOrebroLan.OrganizationServices.Data.DependencyInjection.Extensions;
+using RegionOrebroLan.Organization.Data;
+using RegionOrebroLan.Organization.Data.Builder;
+using RegionOrebroLan.Organization.Data.DependencyInjection.Extensions;
 
 namespace IntegrationTests.Builder
 {

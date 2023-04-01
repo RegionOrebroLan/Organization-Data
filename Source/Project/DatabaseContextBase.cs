@@ -4,9 +4,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Internal;
-using RegionOrebroLan.OrganizationServices.Data.Entities;
+using RegionOrebroLan.Organization.Data.Entities;
 
-namespace RegionOrebroLan.OrganizationServices.Data
+namespace RegionOrebroLan.Organization.Data
 {
 	public abstract class DatabaseContextBase : DbContext
 	{

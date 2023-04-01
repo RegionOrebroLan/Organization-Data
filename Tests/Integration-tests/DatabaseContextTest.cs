@@ -8,9 +8,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Internal;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RegionOrebroLan.OrganizationServices.Data;
-using RegionOrebroLan.OrganizationServices.Data.DependencyInjection.Extensions;
-using RegionOrebroLan.OrganizationServices.Data.Entities;
+using RegionOrebroLan.Organization.Data;
+using RegionOrebroLan.Organization.Data.DependencyInjection.Extensions;
+using RegionOrebroLan.Organization.Data.Entities;
 
 namespace IntegrationTests
 {

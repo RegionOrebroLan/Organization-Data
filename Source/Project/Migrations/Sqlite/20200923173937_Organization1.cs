@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace RegionOrebroLan.OrganizationServices.Data.Migrations.Sqlite
+namespace RegionOrebroLan.Organization.Data.Migrations.Sqlite
 {
 	public partial class Update : Migration
 	{

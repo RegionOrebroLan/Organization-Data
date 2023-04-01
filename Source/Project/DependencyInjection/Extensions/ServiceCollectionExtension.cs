@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Internal;
 
-namespace RegionOrebroLan.OrganizationServices.Data.DependencyInjection.Extensions
+namespace RegionOrebroLan.Organization.Data.DependencyInjection.Extensions
 {
 	public static class ServiceCollectionExtension
 	{

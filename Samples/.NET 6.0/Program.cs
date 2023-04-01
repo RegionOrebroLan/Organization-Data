@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using RegionOrebroLan.OrganizationServices.Data;
-using RegionOrebroLan.OrganizationServices.Data.Builder;
-using RegionOrebroLan.OrganizationServices.Data.DependencyInjection.Extensions;
+using RegionOrebroLan.Organization.Data;
+using RegionOrebroLan.Organization.Data.Builder;
+using RegionOrebroLan.Organization.Data.DependencyInjection.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 

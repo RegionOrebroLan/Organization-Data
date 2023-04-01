@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Internal;
 
-namespace RegionOrebroLan.OrganizationServices.Data.Internal
+namespace RegionOrebroLan.Organization.Data.Internal
 {
 	/// <summary>
 	/// Class used when creating migrations.

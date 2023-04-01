@@ -4,7 +4,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 
-namespace RegionOrebroLan.OrganizationServices.Data.Migrations.Sqlite
+namespace RegionOrebroLan.Organization.Data.Migrations.Sqlite
 {
 	[DbContext(typeof(SqliteDatabaseContext))]
 	partial class SqliteDatabaseContextModelSnapshot : ModelSnapshot
@@ -17,7 +17,7 @@ namespace RegionOrebroLan.OrganizationServices.Data.Migrations.Sqlite
 			modelBuilder
 				.HasAnnotation("ProductVersion", "3.1.6");
 
-			modelBuilder.Entity("RegionOrebroLan.OrganizationServices.Data.Entities.Entry", b =>
+			modelBuilder.Entity("RegionOrebroLan.Organization.Data.Entities.Entry", b =>
 			{
 				b.Property<int>("Id")
 					.ValueGeneratedOnAdd()

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace RegionOrebroLan.OrganizationServices.Data.Migrations.SqlServer
+namespace RegionOrebroLan.Organization.Data.Migrations.SqlServer
 {
 	[DbContext(typeof(SqlServerDatabaseContext))]
 	partial class SqlServerDatabaseContextModelSnapshot : ModelSnapshot
@@ -20,7 +20,7 @@ namespace RegionOrebroLan.OrganizationServices.Data.Migrations.SqlServer
 				.HasAnnotation("Relational:MaxIdentifierLength", 128)
 				.HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-			modelBuilder.Entity("RegionOrebroLan.OrganizationServices.Data.Entities.Entry", b =>
+			modelBuilder.Entity("RegionOrebroLan.Organization.Data.Entities.Entry", b =>
 			{
 				b.Property<int>("Id")
 					.ValueGeneratedOnAdd()

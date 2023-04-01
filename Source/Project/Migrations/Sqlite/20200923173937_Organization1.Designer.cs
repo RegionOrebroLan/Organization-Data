@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using RegionOrebroLan.OrganizationServices.Data;
+using RegionOrebroLan.Organization.Data;
 
-namespace RegionOrebroLan.OrganizationServices.Data.Migrations.Sqlite
+namespace RegionOrebroLan.Organization.Data.Migrations.Sqlite
 {
     [DbContext(typeof(SqliteDatabaseContext))]
-    [Migration("20200815151608_OrganizationServices")]
-    partial class Create
+    [Migration("20200923173937_Organization1")]
+    partial class Update
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -18,7 +18,7 @@ namespace RegionOrebroLan.OrganizationServices.Data.Migrations.Sqlite
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.6");
 
-            modelBuilder.Entity("RegionOrebroLan.OrganizationServices.Data.Entities.Entry", b =>
+            modelBuilder.Entity("RegionOrebroLan.Organization.Data.Entities.Entry", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -64,7 +64,7 @@ namespace RegionOrebroLan.OrganizationServices.Data.Migrations.Sqlite
 
                     b.Property<string>("DropInHours")
                         .HasColumnType("TEXT")
-                        .HasMaxLength(200);
+                        .HasMaxLength(500);
 
                     b.Property<string>("EndDate")
                         .HasColumnType("TEXT")
@@ -337,11 +337,11 @@ namespace RegionOrebroLan.OrganizationServices.Data.Migrations.Sqlite
 
                     b.Property<string>("SurgeryHours")
                         .HasColumnType("TEXT")
-                        .HasMaxLength(200);
+                        .HasMaxLength(500);
 
                     b.Property<string>("TelephoneHours")
                         .HasColumnType("TEXT")
-                        .HasMaxLength(200);
+                        .HasMaxLength(500);
 
                     b.Property<string>("TelephoneNumber")
                         .HasColumnType("TEXT")
@@ -377,7 +377,7 @@ namespace RegionOrebroLan.OrganizationServices.Data.Migrations.Sqlite
 
                     b.Property<string>("VisitingHours")
                         .HasColumnType("TEXT")
-                        .HasMaxLength(200);
+                        .HasMaxLength(500);
 
                     b.HasKey("Id");
 

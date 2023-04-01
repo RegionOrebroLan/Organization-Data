@@ -1,4 +1,4 @@
-# OrganizationServices-Data
+# Organization-Data
 
 Database for organizational directory-services, Region Örebro län. That is, for the moment, EF Core entities and db-contexts. There are three db-contexts:
 - DatabaseContext
@@ -11,7 +11,7 @@ Migrations exist for:
 
 With DatabaseContext you can create your own migrations.
 
-[![NuGet](https://img.shields.io/nuget/v/RegionOrebroLan.OrganizationServices.Data.svg?label=NuGet)](https://www.nuget.org/packages/RegionOrebroLan.OrganizationServices.Data)
+[![NuGet](https://img.shields.io/nuget/v/RegionOrebroLan.Organization.Data.svg?label=NuGet)](https://www.nuget.org/packages/RegionOrebroLan.Organization.Data)
 
 ## 1 Development
 
@@ -41,8 +41,8 @@ If you want more migration-information you can add the -Verbose parameter:
 	Write-Host "Removing current migrations-directory...";
 	Remove-Item "Project\Migrations" -ErrorAction Ignore -Force -Recurse;
 	Write-Host "Creating migrations...";
-	Add-Migration OrganizationServices -Context SqliteDatabaseContext -OutputDir Migrations/Sqlite -Project Project -StartupProject Project;
-	Add-Migration OrganizationServices -Context SqlServerDatabaseContext -OutputDir Migrations/SqlServer -Project Project -StartupProject Project;
+	Add-Migration Organization -Context SqliteDatabaseContext -OutputDir Migrations/Sqlite -Project Project -StartupProject Project;
+	Add-Migration Organization -Context SqlServerDatabaseContext -OutputDir Migrations/SqlServer -Project Project -StartupProject Project;
 	Write-Host "Finnished";
 
 #### 1.2.2 Update migrations
@@ -50,8 +50,8 @@ If you want more migration-information you can add the -Verbose parameter:
 Copy all the commands below and run them in the Package Manager Console.
 
 	Write-Host "Updating migrations...";
-	Add-Migration OrganizationServices1 -Context SqliteDatabaseContext -OutputDir Migrations/Sqlite -Project Project -StartupProject Project;
-	Add-Migration OrganizationServices1 -Context SqlServerDatabaseContext -OutputDir Migrations/SqlServer -Project Project -StartupProject Project;
+	Add-Migration Organization1 -Context SqliteDatabaseContext -OutputDir Migrations/Sqlite -Project Project -StartupProject Project;
+	Add-Migration Organization1 -Context SqlServerDatabaseContext -OutputDir Migrations/SqlServer -Project Project -StartupProject Project;
 	Write-Host "Finnished";
 
 ### 1.3 Scaffold-DbContext

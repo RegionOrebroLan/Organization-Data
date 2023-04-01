@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using RegionOrebroLan.OrganizationServices.Data;
+using RegionOrebroLan.Organization.Data;
 
 namespace IntegrationTests.Fakes
 {

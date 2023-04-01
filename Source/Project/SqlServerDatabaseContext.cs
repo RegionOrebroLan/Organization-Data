@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Internal;
 
-namespace RegionOrebroLan.OrganizationServices.Data
+namespace RegionOrebroLan.Organization.Data
 {
 	public class SqlServerDatabaseContext : DatabaseContextBase<SqlServerDatabaseContext>
 	{

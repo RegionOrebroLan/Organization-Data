@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using RegionOrebroLan.OrganizationServices.Data;
+using RegionOrebroLan.Organization.Data;
 
-namespace RegionOrebroLan.OrganizationServices.Data.Migrations.SqlServer
+namespace RegionOrebroLan.Organization.Data.Migrations.SqlServer
 {
     [DbContext(typeof(SqlServerDatabaseContext))]
-    [Migration("20200815151616_OrganizationServices")]
+    [Migration("20200815151616_Organization")]
     partial class Create
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,7 +21,7 @@ namespace RegionOrebroLan.OrganizationServices.Data.Migrations.SqlServer
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("RegionOrebroLan.OrganizationServices.Data.Entities.Entry", b =>
+            modelBuilder.Entity("RegionOrebroLan.Organization.Data.Entities.Entry", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

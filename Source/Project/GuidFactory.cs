@@ -1,6 +1,6 @@
 using System;
 
-namespace RegionOrebroLan.OrganizationServices.Data
+namespace RegionOrebroLan.Organization.Data
 {
 	public class GuidFactory : IGuidFactory
 	{

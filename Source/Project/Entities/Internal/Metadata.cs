@@ -1,4 +1,4 @@
-namespace RegionOrebroLan.OrganizationServices.Data.Entities.Internal
+namespace RegionOrebroLan.Organization.Data.Entities.Internal
 {
 	public static class Metadata
 	{

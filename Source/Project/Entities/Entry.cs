@@ -1,9 +1,9 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
-using RegionOrebroLan.OrganizationServices.Data.Entities.Internal;
+using RegionOrebroLan.Organization.Data.Entities.Internal;
 
-namespace RegionOrebroLan.OrganizationServices.Data.Entities
+namespace RegionOrebroLan.Organization.Data.Entities
 {
 	public class Entry
 	{

@@ -1,14 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<Authors>Region Örebro län</Authors>
-		<AssemblyName>RegionOrebroLan.OrganizationServices.Data</AssemblyName>
+		<AssemblyName>RegionOrebroLan.Organization.Data</AssemblyName>
 		<AssemblyOriginatorKeyFile>$(SolutionDir)StrongName.snk</AssemblyOriginatorKeyFile>
 		<Company>$(Authors)</Company>
 		<Description>Database for organizational directory-services, Region Örebro län.</Description>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<PackageProjectUrl>https://github.com/RegionOrebroLan/OrganizationServices-Data/</PackageProjectUrl>
-		<PackageReleaseNotes>https://github.com/RegionOrebroLan/OrganizationServices-Data/releases/</PackageReleaseNotes>
+		<PackageProjectUrl>https://github.com/RegionOrebroLan/Organization-Data/</PackageProjectUrl>
+		<PackageReleaseNotes>https://github.com/RegionOrebroLan/Organization-Data/releases/</PackageReleaseNotes>
 		<PackageTags></PackageTags>
 		<RootNamespace>$(AssemblyName)</RootNamespace>
 		<TargetFrameworks>net5.0;net6.0;net7.0;netcoreapp3.1;netstandard2.0</TargetFrameworks>

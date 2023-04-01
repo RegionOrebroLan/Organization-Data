@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using RegionOrebroLan.OrganizationServices.Data;
+using RegionOrebroLan.Organization.Data;
 
 namespace Application.Pages
 {

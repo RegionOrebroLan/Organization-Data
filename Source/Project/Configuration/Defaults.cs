@@ -1,4 +1,4 @@
-namespace RegionOrebroLan.OrganizationServices.Data.Configuration
+namespace RegionOrebroLan.Organization.Data.Configuration
 {
 	public static class Defaults
 	{

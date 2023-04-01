@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace RegionOrebroLan.OrganizationServices.Data.Migrations.SqlServer
+namespace RegionOrebroLan.Organization.Data.Migrations.SqlServer
 {
 	public partial class Update : Migration
 	{
