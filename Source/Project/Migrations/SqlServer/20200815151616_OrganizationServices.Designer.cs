@@ -11,8 +11,8 @@ namespace RegionOrebroLan.Organization.Data.Migrations.SqlServer
 {
     [DbContext(typeof(SqlServerDatabaseContext))]
     [Migration("20200815151616_Organization")]
-    partial class Create
-    {
+    partial class Organization
+	{
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618

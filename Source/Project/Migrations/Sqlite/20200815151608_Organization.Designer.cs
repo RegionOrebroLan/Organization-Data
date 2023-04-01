@@ -10,8 +10,8 @@ namespace RegionOrebroLan.Organization.Data.Migrations.Sqlite
 {
     [DbContext(typeof(SqliteDatabaseContext))]
     [Migration("20200815151608_Organization")]
-    partial class Create
-    {
+    partial class Organization
+	{
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618

@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RegionOrebroLan.Organization.Data.Migrations.SqlServer
 {
-	public partial class Update : Migration
+	public partial class Organization1 : Migration
 	{
 		#region Methods
 

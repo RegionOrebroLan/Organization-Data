@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RegionOrebroLan.Organization.Data.Migrations.Sqlite
 {
-	public partial class Create : Migration
+	public partial class Organization : Migration
 	{
 		#region Methods
 
