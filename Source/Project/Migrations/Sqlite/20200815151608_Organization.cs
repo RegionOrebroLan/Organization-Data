@@ -113,10 +113,7 @@ namespace RegionOrebroLan.Organization.Data.Migrations.Sqlite
 					ValidNotBefore = table.Column<string>(maxLength: 500, nullable: true),
 					VisitingHours = table.Column<string>(maxLength: 200, nullable: true)
 				},
-				constraints: table =>
-				{
-					table.PrimaryKey("PK_Entries", x => x.Id);
-				});
+				constraints: table => { table.PrimaryKey("PK_Entries", x => x.Id); });
 
 			migrationBuilder.CreateIndex(
 				name: "IX_Entries_DistinguishedName",
