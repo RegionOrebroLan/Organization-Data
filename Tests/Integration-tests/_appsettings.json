@@ -1,6 +1,0 @@
-{
-	"ConnectionStrings": {
-		"Sqlite": "Data Source=|DataDirectory|Sqlite.db",
-		"SqlServer": "Server=(LocalDB)\\MSSQLLocalDB;AttachDbFileName=|DataDirectory|SqlServer.mdf;Integrated Security=True;MultipleActiveResultSets=True"
-	}
-}
