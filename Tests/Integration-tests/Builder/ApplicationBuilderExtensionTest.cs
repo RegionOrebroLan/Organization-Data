@@ -1,6 +1,5 @@
-using System;
-using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using IntegrationTests.Helpers;
 using Microsoft.AspNetCore.Builder.Internal;
 using Microsoft.EntityFrameworkCore;
@@ -18,57 +17,91 @@ namespace IntegrationTests.Builder
 	{
 		#region Methods
 
-		[TestMethod]
-		public void Sqlite_Test()
+		[ClassInitialize]
+		public static async Task InitializeAsync(TestContext _)
+		{
+			await DatabaseHelper.DeleteDatabasesAsync();
+		}
+
+		protected internal virtual async Task UseOrganizationContext_Sqlite_Test(ServiceLifetime serviceLifetime)
 		{
 			var services = new ServiceCollection();
-			services.AddSqliteDatabaseContext(builder => builder.UseSqlite(Global.Configuration.GetConnectionString("SQLite")));
+			services.AddSqliteOrganizationContext(builder => builder.UseSqlite(Global.Configuration.GetConnectionString("Sqlite")), serviceLifetime, serviceLifetime);
 
-			var applicationBuilder = new ApplicationBuilder(services.BuildServiceProvider());
-			applicationBuilder.UseSqliteDatabaseContext();
-
-			// ReSharper disable ConvertToUsingDeclaration
-			using(var scope = applicationBuilder.ApplicationServices.CreateScope())
+			using(var serviceProvider = services.BuildServiceProvider())
 			{
-				var sqliteDatabaseContext = scope.ServiceProvider.GetRequiredService<SqliteDatabaseContext>();
+				var applicationBuilder = new ApplicationBuilder(serviceProvider);
+				applicationBuilder.UseOrganizationContext();
 
-				Assert.IsFalse(sqliteDatabaseContext.Entries.Any());
+				using(var scope = applicationBuilder.ApplicationServices.CreateScope())
+				{
+					var sqliteOrganizationContext = scope.ServiceProvider.GetRequiredService<OrganizationContext>();
 
-				sqliteDatabaseContext.Database.EnsureDeleted();
+					Assert.IsFalse(sqliteOrganizationContext.Entries.Any());
+
+					await sqliteOrganizationContext.Database.EnsureDeletedAsync();
+				}
 			}
-			// ReSharper restore ConvertToUsingDeclaration
 		}
 
 		[TestMethod]
-		public void SqlServer_Test()
+		public async Task UseOrganizationContext_SqliteAndScopedLifetime_Test()
 		{
-			var connectionString = Global.Configuration.GetConnectionString("SQLServer");
-			var dataDirectoryPath = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
-			var originalDataDirectoryPath = AppDomain.CurrentDomain.GetData(Global.DataDirectoryName);
-			Directory.CreateDirectory(dataDirectoryPath);
-			AppDomain.CurrentDomain.SetData(Global.DataDirectoryName, dataDirectoryPath);
+			await this.UseOrganizationContext_Sqlite_Test(ServiceLifetime.Scoped);
+		}
 
-			connectionString = SqlServerHelper.ResolveConnectionString(connectionString, dataDirectoryPath);
+		[TestMethod]
+		public async Task UseOrganizationContext_SqliteAndSingletonLifetime_Test()
+		{
+			await this.UseOrganizationContext_Sqlite_Test(ServiceLifetime.Singleton);
+		}
+
+		[TestMethod]
+		public async Task UseOrganizationContext_SqliteAndTransientLifetime_Test()
+		{
+			await this.UseOrganizationContext_Sqlite_Test(ServiceLifetime.Transient);
+		}
+
+		protected internal virtual async Task UseOrganizationContext_SqlServer_Test(ServiceLifetime serviceLifetime)
+		{
+			var connectionString = Global.Configuration.GetConnectionString("SqlServer");
+			connectionString = await SqlServerConnectionStringResolver.ResolveAsync(connectionString);
 
 			var services = new ServiceCollection();
-			services.AddSqlServerDatabaseContext(builder => builder.UseSqlServer(connectionString));
+			services.AddSqlServerOrganizationContext(builder => builder.UseSqlServer(connectionString), serviceLifetime, serviceLifetime);
 
-			var applicationBuilder = new ApplicationBuilder(services.BuildServiceProvider());
-			applicationBuilder.UseSqlServerDatabaseContext();
-
-			// ReSharper disable ConvertToUsingDeclaration
-			using(var scope = applicationBuilder.ApplicationServices.CreateScope())
+			using(var serviceProvider = services.BuildServiceProvider())
 			{
-				var sqlServerDatabaseContext = scope.ServiceProvider.GetRequiredService<SqlServerDatabaseContext>();
+				var applicationBuilder = new ApplicationBuilder(serviceProvider);
+				applicationBuilder.UseOrganizationContext();
 
-				Assert.IsFalse(sqlServerDatabaseContext.Entries.Any());
+				using(var scope = applicationBuilder.ApplicationServices.CreateScope())
+				{
+					var sqlServerOrganizationContext = scope.ServiceProvider.GetRequiredService<OrganizationContext>();
 
-				sqlServerDatabaseContext.Database.EnsureDeleted();
+					Assert.IsFalse(sqlServerOrganizationContext.Entries.Any());
+
+					await sqlServerOrganizationContext.Database.EnsureDeletedAsync();
+				}
 			}
-			// ReSharper restore ConvertToUsingDeclaration
+		}
 
-			AppDomain.CurrentDomain.SetData(Global.DataDirectoryName, originalDataDirectoryPath);
-			Directory.Delete(dataDirectoryPath, true);
+		[TestMethod]
+		public async Task UseOrganizationContext_SqlServerAndScopedLifetime_Test()
+		{
+			await this.UseOrganizationContext_SqlServer_Test(ServiceLifetime.Scoped);
+		}
+
+		[TestMethod]
+		public async Task UseOrganizationContext_SqlServerAndSingletonLifetime_Test()
+		{
+			await this.UseOrganizationContext_SqlServer_Test(ServiceLifetime.Singleton);
+		}
+
+		[TestMethod]
+		public async Task UseOrganizationContext_SqlServerAndTransientLifetime_Test()
+		{
+			await this.UseOrganizationContext_SqlServer_Test(ServiceLifetime.Transient);
 		}
 
 		#endregion

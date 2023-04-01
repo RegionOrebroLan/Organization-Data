@@ -9,18 +9,18 @@ namespace Application.Pages
 	{
 		#region Constructors
 
-		public IndexModel(DatabaseContextBase databaseContext)
+		public IndexModel(IOrganizationContext organizationContext)
 		{
-			this.DatabaseContext = databaseContext ?? throw new ArgumentNullException(nameof(databaseContext));
+			this.OrganizationContext = organizationContext ?? throw new ArgumentNullException(nameof(organizationContext));
 		}
 
 		#endregion
 
 		#region Properties
 
-		protected internal virtual DatabaseContextBase DatabaseContext { get; }
 		public virtual Exception Exception { get; set; }
 		public virtual string Message { get; set; }
+		protected internal virtual IOrganizationContext OrganizationContext { get; }
 
 		#endregion
 
@@ -30,7 +30,7 @@ namespace Application.Pages
 		{
 			try
 			{
-				var numberOfEntries = this.DatabaseContext.Entries.Count();
+				var numberOfEntries = this.OrganizationContext.Entries.Count();
 
 				this.Message = $"There are {numberOfEntries} entries in the database.";
 			}

@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Internal;
+using RegionOrebroLan.Organization.Data.Sqlite;
+using RegionOrebroLan.Organization.Data.SqlServer;
 
 namespace RegionOrebroLan.Organization.Data.DependencyInjection.Extensions
 {
@@ -10,44 +12,39 @@ namespace RegionOrebroLan.Organization.Data.DependencyInjection.Extensions
 	{
 		#region Methods
 
-		public static IServiceCollection AddDatabaseContext(this IServiceCollection services, Action<DbContextOptionsBuilder> optionsAction = null, bool forceDependencies = false, ServiceLifetime contextLifetime = ServiceLifetime.Scoped, ServiceLifetime optionsLifetime = ServiceLifetime.Scoped)
-		{
-			return services.AddDatabaseContextInternal<DatabaseContext>(optionsAction, forceDependencies, contextLifetime, optionsLifetime);
-		}
-
-		public static IServiceCollection AddDatabaseContextDependencies(this IServiceCollection services, bool force = false)
-		{
-			services.AddSingletonInternal<IGuidFactory, GuidFactory>(force);
-			return services.AddSingletonInternal<ISystemClock, SystemClock>(force);
-		}
-
-		private static IServiceCollection AddDatabaseContextInternal<T>(this IServiceCollection services, Action<DbContextOptionsBuilder> optionsAction = null, bool forceDependencies = false, ServiceLifetime contextLifetime = ServiceLifetime.Scoped, ServiceLifetime optionsLifetime = ServiceLifetime.Scoped) where T : DatabaseContextBase
-		{
-			services.AddDatabaseContextDependencies(forceDependencies);
-			return services.AddDbContext<T>(optionsAction, contextLifetime, optionsLifetime);
-		}
-
-		private static IServiceCollection AddSingletonInternal<TService, TImplementation>(this IServiceCollection services, bool force) where TService : class where TImplementation : class, TService
+		public static IServiceCollection AddOrganizationContext<T>(this IServiceCollection services, Action<DbContextOptionsBuilder> optionsAction = null, ServiceLifetime contextLifetime = ServiceLifetime.Scoped, ServiceLifetime optionsLifetime = ServiceLifetime.Scoped) where T : OrganizationContext
 		{
 			if(services == null)
 				throw new ArgumentNullException(nameof(services));
 
-			if(force)
-				services.AddSingleton<TService, TImplementation>();
-			else
-				services.TryAddSingleton<TService, TImplementation>();
+			services.AddOrganizationContextDependencies();
+			services.AddDbContext<T>(optionsAction, contextLifetime, optionsLifetime);
+			services.Add(new ServiceDescriptor(typeof(IOrganizationContext), serviceProvider => serviceProvider.GetService<OrganizationContext>(), contextLifetime));
+			services.Add(new ServiceDescriptor(typeof(OrganizationContext), serviceProvider => serviceProvider.GetService<T>(), contextLifetime));
+			services.AddSingleton<IOrganizationContextFactory, OrganizationContextFactory>();
 
 			return services;
 		}
 
-		public static IServiceCollection AddSqliteDatabaseContext(this IServiceCollection services, Action<DbContextOptionsBuilder> optionsAction = null, bool forceDependencies = false, ServiceLifetime contextLifetime = ServiceLifetime.Scoped, ServiceLifetime optionsLifetime = ServiceLifetime.Scoped)
+		public static IServiceCollection AddOrganizationContextDependencies(this IServiceCollection services)
 		{
-			return services.AddDatabaseContextInternal<SqliteDatabaseContext>(optionsAction, forceDependencies, contextLifetime, optionsLifetime);
+			if(services == null)
+				throw new ArgumentNullException(nameof(services));
+
+			services.TryAddSingleton<IGuidFactory, GuidFactory>();
+			services.TryAddSingleton<ISystemClock, SystemClock>();
+
+			return services;
 		}
 
-		public static IServiceCollection AddSqlServerDatabaseContext(this IServiceCollection services, Action<DbContextOptionsBuilder> optionsAction = null, bool forceDependencies = false, ServiceLifetime contextLifetime = ServiceLifetime.Scoped, ServiceLifetime optionsLifetime = ServiceLifetime.Scoped)
+		public static IServiceCollection AddSqliteOrganizationContext(this IServiceCollection services, Action<DbContextOptionsBuilder> optionsAction = null, ServiceLifetime contextLifetime = ServiceLifetime.Scoped, ServiceLifetime optionsLifetime = ServiceLifetime.Scoped)
 		{
-			return services.AddDatabaseContextInternal<SqlServerDatabaseContext>(optionsAction, forceDependencies, contextLifetime, optionsLifetime);
+			return services.AddOrganizationContext<SqliteOrganizationContext>(optionsAction, contextLifetime, optionsLifetime);
+		}
+
+		public static IServiceCollection AddSqlServerOrganizationContext(this IServiceCollection services, Action<DbContextOptionsBuilder> optionsAction = null, ServiceLifetime contextLifetime = ServiceLifetime.Scoped, ServiceLifetime optionsLifetime = ServiceLifetime.Scoped)
+		{
+			return services.AddOrganizationContext<SqlServerOrganizationContext>(optionsAction, contextLifetime, optionsLifetime);
 		}
 
 		#endregion

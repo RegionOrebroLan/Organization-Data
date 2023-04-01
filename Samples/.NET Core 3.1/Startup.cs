@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using RegionOrebroLan.Organization.Data;
 using RegionOrebroLan.Organization.Data.Builder;
 using RegionOrebroLan.Organization.Data.DependencyInjection.Extensions;
 
@@ -34,7 +33,7 @@ namespace Application
 				throw new ArgumentNullException(nameof(app));
 
 			app.UseDeveloperExceptionPage();
-			app.UseSqliteDatabaseContext();
+			app.UseOrganizationContext();
 			app.UseRouting();
 			app.UseEndpoints(endpoints => { endpoints.MapRazorPages(); });
 		}
@@ -45,8 +44,7 @@ namespace Application
 				throw new ArgumentNullException(nameof(services));
 
 			services.AddRazorPages();
-			services.AddSqliteDatabaseContext(options => options.UseSqlite(this.Configuration.GetConnectionString("Database")));
-			services.AddScoped<DatabaseContextBase>(serviceProvider => serviceProvider.GetRequiredService<SqliteDatabaseContext>());
+			services.AddSqliteOrganizationContext(options => options.UseSqlite(this.Configuration.GetConnectionString("Organization")));
 		}
 
 		#endregion

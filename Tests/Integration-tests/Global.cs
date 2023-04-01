@@ -1,11 +1,14 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Hosting.Internal;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace IntegrationTests
@@ -18,7 +21,6 @@ namespace IntegrationTests
 
 		private static IConfiguration _configuration;
 		private static IHostEnvironment _hostEnvironment;
-		public const string DataDirectoryName = "DataDirectory";
 
 		// ReSharper disable PossibleNullReferenceException
 		public static readonly string ProjectDirectoryPath = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName;
@@ -36,7 +38,10 @@ namespace IntegrationTests
 		#region Methods
 
 		[AssemblyCleanup]
-		public static void Cleanup() { }
+		public static async Task CleanupAsync()
+		{
+			await Task.CompletedTask;
+		}
 
 		public static IConfiguration CreateConfiguration(params string[] jsonFilePaths)
 		{
@@ -79,18 +84,15 @@ namespace IntegrationTests
 
 			services.AddSingleton(configuration);
 			services.AddSingleton(HostEnvironment);
-			//services.AddSingleton<ILoggerFactory, LoggerFactoryMock>();
+			services.AddSingleton<ILoggerFactory, NullLoggerFactory>();
 
 			return services;
 		}
 
 		[AssemblyInitialize]
-		public static void Initialize(TestContext testContext)
+		public static async Task InitializeAsync(TestContext _)
 		{
-			if(testContext == null)
-				throw new ArgumentNullException(nameof(testContext));
-
-			AppDomain.CurrentDomain.SetData(DataDirectoryName, Path.Combine(ProjectDirectoryPath, "Data"));
+			await Task.CompletedTask;
 		}
 
 		#endregion

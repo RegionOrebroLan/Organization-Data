@@ -8,7 +8,7 @@ using RegionOrebroLan.Organization.Data.Entities;
 
 namespace RegionOrebroLan.Organization.Data
 {
-	public abstract class DatabaseContextBase : DbContext
+	public abstract class OrganizationContext : DbContext, IOrganizationContext
 	{
 		#region Fields
 
@@ -18,7 +18,7 @@ namespace RegionOrebroLan.Organization.Data
 
 		#region Constructors
 
-		protected DatabaseContextBase(IGuidFactory guidFactory, DbContextOptions options, ISystemClock systemClock) : base(options)
+		protected OrganizationContext(IGuidFactory guidFactory, DbContextOptions options, ISystemClock systemClock) : base(options)
 		{
 			this.GuidFactory = guidFactory ?? throw new ArgumentNullException(nameof(guidFactory));
 			this.SystemClock = systemClock ?? throw new ArgumentNullException(nameof(systemClock));
@@ -87,7 +87,7 @@ namespace RegionOrebroLan.Organization.Data
 			return base.SaveChanges(acceptAllChangesOnSuccess);
 		}
 
-		public override async Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = new())
+		public override async Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
 		{
 			this.PrepareSaveChanges();
 
@@ -97,11 +97,11 @@ namespace RegionOrebroLan.Organization.Data
 		#endregion
 	}
 
-	public abstract class DatabaseContextBase<T> : DatabaseContextBase where T : DatabaseContextBase
+	public abstract class OrganizationContext<T> : OrganizationContext where T : OrganizationContext
 	{
 		#region Constructors
 
-		protected DatabaseContextBase(IGuidFactory guidFactory, DbContextOptions<T> options, ISystemClock systemClock) : base(guidFactory, options, systemClock) { }
+		protected OrganizationContext(IGuidFactory guidFactory, DbContextOptions<T> options, ISystemClock systemClock) : base(guidFactory, options, systemClock) { }
 
 		#endregion
 	}

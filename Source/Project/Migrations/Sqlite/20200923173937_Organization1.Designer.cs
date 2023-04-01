@@ -3,12 +3,11 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using RegionOrebroLan.Organization.Data;
+using RegionOrebroLan.Organization.Data.Sqlite;
 
 namespace RegionOrebroLan.Organization.Data.Migrations.Sqlite
 {
-    [DbContext(typeof(SqliteDatabaseContext))]
+    [DbContext(typeof(SqliteOrganizationContext))]
     [Migration("20200923173937_Organization1")]
     partial class Organization1
 	{

@@ -4,12 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using RegionOrebroLan.Organization.Data;
+using RegionOrebroLan.Organization.Data.SqlServer;
 
 namespace RegionOrebroLan.Organization.Data.Migrations.SqlServer
 {
-    [DbContext(typeof(SqlServerDatabaseContext))]
+    [DbContext(typeof(SqlServerOrganizationContext))]
     [Migration("20200923173943_Organization1")]
     partial class Organization1
 	{
