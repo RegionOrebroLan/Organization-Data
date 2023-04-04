@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using RegionOrebroLan.Organization.Data.Builder;
+using RegionOrebroLan.Organization.Data.Builder.Extensions;
 using RegionOrebroLan.Organization.Data.DependencyInjection.Extensions;
 
 namespace Application

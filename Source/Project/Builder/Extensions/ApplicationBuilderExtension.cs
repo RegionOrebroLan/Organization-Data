@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace RegionOrebroLan.Organization.Data.Builder
+namespace RegionOrebroLan.Organization.Data.Builder.Extensions
 {
 	public static class ApplicationBuilderExtension
 	{

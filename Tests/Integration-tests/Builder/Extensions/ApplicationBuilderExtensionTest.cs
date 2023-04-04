@@ -7,10 +7,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RegionOrebroLan.Organization.Data;
-using RegionOrebroLan.Organization.Data.Builder;
+using RegionOrebroLan.Organization.Data.Builder.Extensions;
 using RegionOrebroLan.Organization.Data.DependencyInjection.Extensions;
 
-namespace IntegrationTests.Builder
+namespace IntegrationTests.Builder.Extensions
 {
 	[TestClass]
 	public class ApplicationBuilderExtensionTest
