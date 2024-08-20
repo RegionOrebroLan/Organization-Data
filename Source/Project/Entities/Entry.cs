@@ -123,6 +123,9 @@ namespace RegionOrebroLan.Organization.Data.Entities
 		[MaxLength(50)]
 		public virtual string HsaTitle { get; set; }
 
+		[MaxLength(200)]
+		public virtual string HsaVideoPhone { get; set; }
+
 		[MaxLength(10)]
 		public virtual string HsaVisitingRuleAge { get; set; }
 

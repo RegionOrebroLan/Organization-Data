@@ -159,6 +159,10 @@ namespace RegionOrebroLan.Organization.Data.Migrations.Sqlite
                         .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("HsaVideoPhone")
+                        .HasMaxLength(200)
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("HsaVisitingRuleAge")
                         .HasMaxLength(10)
                         .HasColumnType("TEXT");
