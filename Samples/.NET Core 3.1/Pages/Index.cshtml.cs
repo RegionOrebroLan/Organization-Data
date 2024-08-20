@@ -5,22 +5,13 @@ using RegionOrebroLan.Organization.Data;
 
 namespace Application.Pages
 {
-	public class IndexModel : PageModel
+	public class IndexModel(IOrganizationContext organizationContext) : PageModel
 	{
-		#region Constructors
-
-		public IndexModel(IOrganizationContext organizationContext)
-		{
-			this.OrganizationContext = organizationContext ?? throw new ArgumentNullException(nameof(organizationContext));
-		}
-
-		#endregion
-
 		#region Properties
 
 		public virtual Exception Exception { get; set; }
 		public virtual string Message { get; set; }
-		protected internal virtual IOrganizationContext OrganizationContext { get; }
+		protected internal virtual IOrganizationContext OrganizationContext { get; } = organizationContext ?? throw new ArgumentNullException(nameof(organizationContext));
 
 		#endregion
 

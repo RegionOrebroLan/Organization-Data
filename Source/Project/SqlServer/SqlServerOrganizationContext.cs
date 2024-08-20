@@ -3,12 +3,5 @@ using Microsoft.Extensions.Internal;
 
 namespace RegionOrebroLan.Organization.Data.SqlServer
 {
-	public class SqlServerOrganizationContext : OrganizationContext<SqlServerOrganizationContext>
-	{
-		#region Constructors
-
-		public SqlServerOrganizationContext(IGuidFactory guidFactory, DbContextOptions<SqlServerOrganizationContext> options, ISystemClock systemClock) : base(guidFactory, options, systemClock) { }
-
-		#endregion
-	}
+	public class SqlServerOrganizationContext(IGuidFactory guidFactory, DbContextOptions<SqlServerOrganizationContext> options, ISystemClock systemClock) : OrganizationContext<SqlServerOrganizationContext>(guidFactory, options, systemClock) { }
 }

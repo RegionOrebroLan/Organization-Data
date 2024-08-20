@@ -8,7 +8,7 @@ using RegionOrebroLan.Organization.Data.Entities;
 
 namespace RegionOrebroLan.Organization.Data
 {
-	public abstract class OrganizationContext : DbContext, IOrganizationContext
+	public abstract class OrganizationContext(IGuidFactory guidFactory, DbContextOptions options, ISystemClock systemClock) : DbContext(options), IOrganizationContext
 	{
 		#region Fields
 
@@ -16,21 +16,11 @@ namespace RegionOrebroLan.Organization.Data
 
 		#endregion
 
-		#region Constructors
-
-		protected OrganizationContext(IGuidFactory guidFactory, DbContextOptions options, ISystemClock systemClock) : base(options)
-		{
-			this.GuidFactory = guidFactory ?? throw new ArgumentNullException(nameof(guidFactory));
-			this.SystemClock = systemClock ?? throw new ArgumentNullException(nameof(systemClock));
-		}
-
-		#endregion
-
 		#region Properties
 
 		public virtual DbSet<Entry> Entries { get; set; }
-		protected internal virtual IGuidFactory GuidFactory { get; }
-		protected internal virtual ISystemClock SystemClock { get; }
+		protected internal virtual IGuidFactory GuidFactory { get; } = guidFactory ?? throw new ArgumentNullException(nameof(guidFactory));
+		protected internal virtual ISystemClock SystemClock { get; } = systemClock ?? throw new ArgumentNullException(nameof(systemClock));
 
 		#endregion
 
@@ -97,12 +87,5 @@ namespace RegionOrebroLan.Organization.Data
 		#endregion
 	}
 
-	public abstract class OrganizationContext<T> : OrganizationContext where T : OrganizationContext
-	{
-		#region Constructors
-
-		protected OrganizationContext(IGuidFactory guidFactory, DbContextOptions<T> options, ISystemClock systemClock) : base(guidFactory, options, systemClock) { }
-
-		#endregion
-	}
+	public abstract class OrganizationContext<T>(IGuidFactory guidFactory, DbContextOptions<T> options, ISystemClock systemClock) : OrganizationContext(guidFactory, options, systemClock) where T : OrganizationContext { }
 }
