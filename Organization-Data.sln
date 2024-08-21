@@ -16,11 +16,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".root", ".root", "{1082A22F
 		StrongName.Development.snk = StrongName.Development.snk
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{DF147BA2-7ADB-4D49-AF00-6C9AF06F5EC5}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".samples", ".samples", "{DF147BA2-7ADB-4D49-AF00-6C9AF06F5EC5}"
 	ProjectSection(SolutionItems) = preProject
-		Samples\.editorconfig = Samples\.editorconfig
-		Samples\Directory.Build.props = Samples\Directory.Build.props
-		Samples\Directory.Build.targets = Samples\Directory.Build.targets
+		.samples\.editorconfig = .samples\.editorconfig
+		.samples\Directory.Build.props = .samples\Directory.Build.props
+		.samples\Directory.Build.targets = .samples\Directory.Build.targets
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{97942DA1-C712-4388-8946-A55B6035FB3F}"
@@ -32,9 +32,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5C2651D0
 		Tests\Directory.Build.targets = Tests\Directory.Build.targets
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = ".NET 6.0", "Samples\.NET 6.0\.NET 6.0.csproj", "{CEAFC139-60FA-4810-ACC7-79FF3B280603}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = ".NET 6.0", ".samples\.NET 6.0\.NET 6.0.csproj", "{CEAFC139-60FA-4810-ACC7-79FF3B280603}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = ".NET Core 3.1", "Samples\.NET Core 3.1\.NET Core 3.1.csproj", "{DF080289-C246-491D-A366-F5F64B4C056B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = ".NET 8.0", ".samples\.NET 8.0\.NET 8.0.csproj", "{0871D463-3CA6-4210-B6B4-E5717C1F7918}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = ".NET Core 3.1", ".samples\.NET Core 3.1\.NET Core 3.1.csproj", "{DF080289-C246-491D-A366-F5F64B4C056B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project", "Source\Project\Project.csproj", "{041B94DE-A9BB-44F7-80F6-03411AA43735}"
 EndProject
@@ -68,6 +70,10 @@ Global
 		{00562949-2338-4662-AC16-231E1DC30510}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00562949-2338-4662-AC16-231E1DC30510}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00562949-2338-4662-AC16-231E1DC30510}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0871D463-3CA6-4210-B6B4-E5717C1F7918}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0871D463-3CA6-4210-B6B4-E5717C1F7918}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0871D463-3CA6-4210-B6B4-E5717C1F7918}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0871D463-3CA6-4210-B6B4-E5717C1F7918}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,6 +84,7 @@ Global
 		{041B94DE-A9BB-44F7-80F6-03411AA43735} = {97942DA1-C712-4388-8946-A55B6035FB3F}
 		{78E5CE86-A55A-4792-827F-2489473577A1} = {5C2651D0-70E5-43A0-AC7C-BF0D295A41D4}
 		{00562949-2338-4662-AC16-231E1DC30510} = {5C2651D0-70E5-43A0-AC7C-BF0D295A41D4}
+		{0871D463-3CA6-4210-B6B4-E5717C1F7918} = {DF147BA2-7ADB-4D49-AF00-6C9AF06F5EC5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F181FA82-6FD3-449C-A86A-5C3C8F47CB96}
