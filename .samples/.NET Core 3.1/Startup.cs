@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using RegionOrebroLan.Organization.Data.Builder.Extensions;
+using RegionOrebroLan.Organization.Data;
 using RegionOrebroLan.Organization.Data.DependencyInjection.Extensions;
 
 namespace Application
@@ -24,7 +24,12 @@ namespace Application
 				throw new ArgumentNullException(nameof(app));
 
 			app.UseDeveloperExceptionPage();
-			app.UseOrganizationContext();
+
+			using(var scope = app.ApplicationServices.CreateScope())
+			{
+				scope.ServiceProvider.GetRequiredService<OrganizationContext>().Database.Migrate();
+			}
+
 			app.UseRouting();
 			app.UseEndpoints(endpoints => { endpoints.MapRazorPages(); });
 		}
